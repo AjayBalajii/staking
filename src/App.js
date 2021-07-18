@@ -1,8 +1,9 @@
 import logo from './logo.svg';
-import {Modal,InputGroup,FormControl,} from "react-bootstrap";
+import {Modal,Button ,InputGroup,FormControl,} from "react-bootstrap";
 import React, { useState,useEffect } from "react";
 import web3 from './web3';
 import Tabs from'./tab';
+//import "bootstrap/dist/css/bootstrap.min.css";
 import Staking1 from './Staking';
 import './App.css';
 import token from './token';
