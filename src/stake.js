@@ -14,30 +14,20 @@ import Sc1 from './sc1';
 import Sc2 from './sc2';
 //import {BrowserRouter as Router , Route , Link , Switch } from "react-router-dom";
 
-
-window.next=document.getElementById("next");
+window.v=0;
 function Stake(){
     const[activeStep,setActiveStep]=useState(0);
     const[bb ,setbb]=useState("");
 
   const[sacc ,setsacc]=useState("");
-    
+    const[done,setdone]=useState("");
   useEffect(async()=>{
 setsacc(await web3.eth.getAccounts());
 
 if(sacc!=0){
   setbb(await token.methods.balanceOf(sacc[0]).call());
 
-  var v1=document.getElementById("next");
-
-  if(v1!=null&&sacc!=0){
-    document.getElementById("next").disabled=false;
-
-  }
-  else{
-    document.getElementById("next").disabled=true;
-
-  }
+  
 }
   });
   
@@ -62,10 +52,12 @@ if(sacc!=0){
         }
       }
       function onc(){
-        document.getElementById("next").disabled=false;
-      
+        var next=document.getElementById("next");
+              
         window.v=document.getElementById("max").value;
-        
+        if(next!=null&&window.v!=0){
+          document.getElementById("next").disabled=false;
+        }
       }
       var stake1=async()=>{
     
@@ -75,7 +67,12 @@ if(sacc!=0){
     alert(am);
     if(am!=0){
         await Staking1.methods.deposit(am).send({from:account[0]});
-    
+    setdone("Successfully done");
+    var done1 =document.getElementById("done");
+  if(done1!=null){
+    document.getElementById("done").disabled=false;
+    window.s=7;
+  }
     }
     
       }
@@ -84,13 +81,34 @@ function st(activeStep){
     
     switch(activeStep){
         case 0:{
+          function ch(){
+            var next=document.getElementById("next");
+            if(next!=null){
+              document.getElementById("next").disabled=false;
+            }
+            var ch1=3;
+            window.a=ch1;
+            
+          }
             
             return(
                 <div >
                   <Sc1/>
-                    <input  class="form-check-input"  type="checkbox"   id="c4"/>&nbsp;
+                    <input  class="form-check-input"  type="checkbox" onClick={ch}  id="c4"/>&nbsp;
      
-     I have read the <a href="#">Terms and Conditions</a>
+     I have read the <a href="#">Terms and Conditions</a><br/><br/>
+     <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
+
+     {
+  (sacc!=0&& window.a==3) ?((
+    <button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
+
+  )):
+  ((
+    <button onClick={nextStep} id="next" class="btn-flat" disabled>Next</button>  
+
+  ))
+}
  
                 </div>
             );
@@ -98,10 +116,13 @@ function st(activeStep){
         case 1:{
           
           var max = async() =>{
-           
+            var next=document.getElementById("next");
+            if(next!=null){
+              document.getElementById("next").disabled=false;
+            }
   
             let account = await web3.eth.getAccounts();
-  
+            
             var balance = await token.methods.balanceOf(account[0]).call();
             balance=balance/1000000000
   
@@ -122,13 +143,9 @@ function st(activeStep){
                 <div class="col-sm-6 offset-sm-3 col-ele ">
                 <label>
                 <p>Amount</p>
-                
-            
-                
-                    <div class="row justify-content-center">
+                  <div class="row justify-content-center">
                         <div class="col-sm">
                         <input type="text" id="max"   placeholder={0} onChange={onc} class="txtf"/>
-            
                         </div>
                         <div class="col-sm">
                             <button class="btn-flat" onClick={max}>MAX</button>
@@ -146,8 +163,21 @@ function st(activeStep){
   
                 </div>
             </div>
-            <br/>
-                    </div>
+            <br/><br/>
+
+            <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
+
+{
+(sacc!=0&& window.v!=0) ?((
+<button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
+
+)):
+((
+<button onClick={nextStep} id="next" class="btn-flat" disabled>Next</button>  
+
+))
+}
+ </div>
   
   
           );
@@ -156,7 +186,10 @@ function st(activeStep){
         case 2:{
           return(
             <div>
+
               <Sc2/>
+              <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
+              <button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
             </div>
           );
 
@@ -164,10 +197,34 @@ function st(activeStep){
         case 3:{
           return(
 <div>
-<h4>Click next Button to continue your staking </h4>
+<h4>Click next Button to continue your staking </h4><br/><br/>
+<button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
+<button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
 
 </div>
           );
+        }
+        case 4:{
+          function lo(){
+            window.location.reload();
+          }
+          return(
+<div>
+<h2>{done}</h2><br/><br/>
+{window.s==7?((
+          <button class="btn-flat" id="done" onClick={lo} >Done</button>
+
+)):
+((
+  <button class="btn-flat" onClick={lo} id="done" disabled>Done</button>
+
+))
+
+}
+</div>
+          
+          );
+          
         }
 
     }
@@ -200,10 +257,6 @@ function st(activeStep){
 <div>
   {st(activeStep)}
 </div>
-<br/>
-<br/>
-<button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
-<button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
 
 
 
