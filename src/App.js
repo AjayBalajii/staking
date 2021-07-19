@@ -208,7 +208,7 @@ useEffect(()=>{bal()})
  
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Total BLACK Staked</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>{tbs/1000000000}</div><br/>
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>APY</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>....</div><br/>
-    <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{reward/1000000000}
+    <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{(reward/1000000000).toFixed(9)}
     
     <br/><br/>
 

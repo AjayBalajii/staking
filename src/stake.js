@@ -120,12 +120,9 @@ function st(activeStep){
             if(next!=null){
               document.getElementById("next").disabled=false;
             }
-  
-            let account = await web3.eth.getAccounts();
-            
-            var balance = await token.methods.balanceOf(account[0]).call();
-            balance=balance/1000000000
-  
+          
+            var balance = await token.methods.balanceOf(sacc[0]).call();
+            balance=balance/1000000000;
             document.getElementById("max").placeholder=balance;
   window.v=balance; 
   

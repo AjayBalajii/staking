@@ -4,6 +4,7 @@ import web3 from './web3';
 //import {Modal,Button,InputGroup,FormControl,} from "react-bootstrap";
 import Staking1 from './Staking';
 import Stake from "./stake";
+import Unstake from "./unstake";
 
 function Tab(){
     const [toggleState, setToggleState] = useState(1);
@@ -72,7 +73,7 @@ else{
             <div
               className={toggleState === 2 ? "content  active-content" : "content"}
             >
-            hiii
+            <Unstake/>
     
     
             </div>
