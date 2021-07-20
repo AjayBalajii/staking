@@ -137,8 +137,13 @@ const [tbs,setTbs]=useState("");
 
  const cr=async()=>{
   let account = await web3.eth.getAccounts();
-
+if(reward>10000000000){
   await Staking1.methods.claimReward().send({from:account[0]});
+
+}
+else{
+  alert("Insufficent Rewards.[Your rewards must be greater than 10]");
+}
 } 
 const bal= async()=>{
 document.body.style.backgroundColor="black";
