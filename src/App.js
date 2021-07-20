@@ -170,6 +170,9 @@ const connect = async() => {
 //document.getElementById("cc").style.visibility="hidden";
 //window.location.reload();
 }
+function backk(){
+  window.location.href="https://blackcollateral.com/";
+}
 useEffect(()=>{bal()})
 
   return (
@@ -180,7 +183,7 @@ useEffect(()=>{bal()})
       <div class="container-fluid">
 <div class="row justify-content-between">
 <div class="col-2">
- <img src ={back} alt="" height={40} width={40}/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <img src ={back} alt="" height={40} onClick={backk} width={40}/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src={logo} alt="" height={80} width={80}/>
 </div>
 <div class="col-4">

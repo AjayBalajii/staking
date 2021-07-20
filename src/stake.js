@@ -142,7 +142,7 @@ function st(activeStep){
                 <p>Amount</p>
                   <div class="row justify-content-center">
                         <div class="col-sm">
-                        <input type="text" id="max"   placeholder={0} onChange={onc} class="txtf"/>
+                        <input type="text" id="max"   placeholder={window.v} onChange={onc} class="txtf"/>
                         </div>
                         <div class="col-sm">
                             <button class="btn-flat" onClick={max}>MAX</button>
@@ -162,7 +162,7 @@ function st(activeStep){
             </div>
             <br/><br/>
 
-            <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
+             &nbsp; &nbsp; 
 
 {
 (sacc!=0&& window.v!=0) ?((

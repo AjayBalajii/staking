@@ -1,7 +1,9 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://staking.blackcollateral.com/",
   "private": true,
+
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@testing-library/jest-dom": "^5.11.4",
