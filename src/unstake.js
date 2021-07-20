@@ -130,7 +130,7 @@ else{
             {
 
             }
-            <h4>After staking ,you need to wait {t4} days  {t1} hours  {t2} minutes  {t3} seconds to unstake your Black token and reward.</h4>
+            <h4>After staking ,you need to wait  {t1} hours  {t2} minutes  {t3} seconds to unstake your Black token and reward.</h4>
             <br/>
             <br/>
             <button class="btn-flat"  id="swap2" onClick={() => setModalShow2(true)}>
