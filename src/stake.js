@@ -123,7 +123,7 @@ function st(activeStep){
           
             var balance = await token.methods.balanceOf(sacc[0]).call();
             balance=balance/1000000000;
-            document.getElementById("max").placeholder=balance;
+            document.getElementById("max").value=balance;
   window.v=balance; 
   
         }
@@ -142,7 +142,7 @@ function st(activeStep){
                 <p>Amount</p>
                   <div class="row justify-content-center">
                         <div class="col-sm">
-                        <input type="text" id="max"   placeholder={window.v} onChange={onc} class="txtf"/>
+                        <input type="text" id="max"   value={window.v} onChange={onc} class="txtf"/>
                         </div>
                         <div class="col-sm">
                             <button class="btn-flat" onClick={max}>MAX</button>
@@ -194,7 +194,7 @@ function st(activeStep){
         case 3:{
           return(
 <div>
-<h4>Click next Button to continue your staking </h4><br/><br/>
+<h4>Click Next  to continue your staking </h4><br/><br/>
 <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
 <button onClick={nextStep} id="next" class="btn-flat" >Next</button>  
 

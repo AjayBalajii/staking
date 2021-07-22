@@ -70,13 +70,17 @@ const[t1,setTim1 ] = useState("");
  const[t3,setTim3 ] = useState("");
 const[t4,setTime4] = useState("");
 const [modalShow2, setModalShow2] = React.useState(false);
-
+var [time, settime]=useState("");
 useEffect(async()=>{
 setuacc(await web3.eth.getAccounts());
 if(uacc!=0){
-    setlock(await Staking.methods.holderUnstakeRemainingTime(uacc[0]).call());
-    var countDownDate = new Date().getTime() + (lock * 1000) ;
+    var us=await Staking.methods.holderUnstakeRemainingTime(uacc[0]).call();
+    var ff=new Date(lock*1000);
+settime(ff.toDateString());
 
+//settime(lock);
+    var countDownDate = new Date().getTime() + (lock * 1000) ;
+//alert(time);
     var x = setInterval(function() {
        var now = new Date().getTime();
       var distance = countDownDate - now ;
@@ -98,7 +102,6 @@ if(uacc!=0){
     
     
     
-    
       // If the count down is over, write some text 
       if (distance < 0) {
             clearInterval(x);
@@ -108,32 +111,26 @@ if(uacc!=0){
       
     }, 1000);
     
-    
+    var now1=(new Date().getTime());
+   // var unstaketime=new Date(now1);
+    //alert(unstaketime.toDateString());
+ 
 
 }
-if(t1!=0&&t2!=0&&t3!=0&&t4!=0){
-    var sss=document.getElementById("swap2");
-    if(sss!=null){
-        document.getElementById("swap2").disabled=true;  
-    }
+if(us<=now1){
+setlock(true);
 }
 else{
-    var sss=document.getElementById("swap2");
-    if(sss!=null){
-        document.getElementById("swap2").disabled=false;  
-    }
+    setlock(false);
 }
 
 })
     return(
         <div>
-            {
-
-            }
-            <h4>After staking ,you need to wait  {t1} hours  {t2} minutes  {t3} seconds to unstake your Black token and reward.</h4>
-            <br/>
-            <br/>
-            <button class="btn-flat"  id="swap2" onClick={() => setModalShow2(true)}>
+            {uacc!=0&&lock==true?((
+              <div>
+                <h4>By clicking Unstake button you can unstake your Black Token</h4><br/><br></br>
+ <button class="btn-flat"  id="swap2" onClick={() => setModalShow2(true)} >
           Unstake
         </button>&nbsp;
   
@@ -141,6 +138,25 @@ else{
           show={modalShow2}
           onHide={() => setModalShow2(false)}
         />  
+              </div>  
+            )):
+((
+  <div>
+    <h4>After staking ,you need to wait till this <span style={{color:"#5bc0de"}}>{time} </span> for unstake your Black token and reward.</h4>
+            <br/>
+            <br/>
+            <button class="btn-flat"  id="swap2" onClick={() => setModalShow2(true)} disabled>
+          Unstake
+        </button>&nbsp;
+  
+        <MyVerticallyCenteredModal2
+          show={modalShow2}
+          onHide={() => setModalShow2(false)}
+        />  
+  </div>  
+))
+            }
+            
         </div>
     );
 }

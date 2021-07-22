@@ -8,6 +8,7 @@ import Staking1 from './Staking';
 import './App.css';
 import token from './token';
 import back from './back.png'
+import Staking from './Staking';
 
 function MyVerticallyCenteredModal1(props) {
     
@@ -132,7 +133,9 @@ const [userinfo,setuserinfo]=useState([]);
   const [reward,setReward]=useState("");
 const [tbs,setTbs]=useState("");
  const[acc1,setacc1]=useState("");
-  
+ const [lock ,setlock]=useState("");
+ var [time, settime]=useState("");
+
 
 
  const cr=async()=>{
@@ -151,22 +154,30 @@ document.body.style.backgroundColor="black";
 let account = await web3.eth.getAccounts();
 setacc1(await web3.eth.getAccounts());
 if(account!=0){
-document.getElementById("swap1").disabled=false;
-document.getElementById("swap2").disabled=false;
-document.getElementById("swap3").disabled=false;
-
+  
 
 setReward(await Staking1.methods.pendingBlack(account[0]).call());
 setTbs(await token.methods.balanceOf("0xf1ff561190950Ed9020fe62DB83045dED760A606").call());
 setuserinfo(await Staking1.methods.userInfo(account[0]).call());
 // await Staking1.methods.userInfo(account[0]).call()
+var us =await Staking.methods.holderUnstakeRemainingTime(account[0]).call();
+var now = new Date().getTime();
+if(us<=now){
+setlock(true);
 }
 else{
-  document.getElementById("swap1").disabled=true;
-  document.getElementById("swap2").disabled=true;
-  document.getElementById("swap3").disabled=true;
+  setlock(false);
+}
 
 }
+else{
+  
+
+}
+
+
+
+
 }
 const connect = async() => {
   window.ethereum.enable();
@@ -216,29 +227,89 @@ useEffect(()=>{bal()})
  
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Total BLACK Staked</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>{tbs/1000000000}</div><br/>
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>APY</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>....</div><br/>
-    <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{(reward/1000000000).toFixed(9)}
+    <div class="container col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{(reward/1000000000).toFixed(9)}
     
     <br/><br/>
-
+<div class="row">
+  <div class="col-sm-3">
+  {
+  acc1!=0?((
+    <div>
     <button class="btn-flat btn-sm"  id="swap1" onClick={() => setModalShow1(true)}>
-          Stake
-        </button>&nbsp;
-  
-        <MyVerticallyCenteredModal1
-          show={modalShow1}
-          onHide={() => setModalShow1(false)}
-        /> 
-        
-        
-    <button class="btn-flat btn-sm"  id="swap2" onClick={() => setModalShow2(true)}>
+    Stake
+  </button>
+
+  <MyVerticallyCenteredModal1
+    show={modalShow1}
+    onHide={() => setModalShow1(false)}
+  /> 
+  </div>
+  )):((
+    <div>
+    <button class="btn-flat btn-sm"  id="swap1" onClick={() => setModalShow1(true)} disabled>
+    Stake
+  </button>
+
+  <MyVerticallyCenteredModal1
+    show={modalShow1}
+    onHide={() => setModalShow1(false)}
+  /> 
+  </div>
+  ))
+}
+  </div>
+  <div class="col-sm-3">
+  {
+  (acc1!=0&&lock==true)?((
+    <div>
+ <button class="btn-flat btn-sm"  id="swap2" onClick={() => setModalShow2(true)}>
           Unstake
-        </button>&nbsp;
+        </button>
   
         <MyVerticallyCenteredModal2
           show={modalShow2}
           onHide={() => setModalShow2(false)}
-        />   
-   <button class="btn-flat btn-sm" id="swap3" onClick={cr}>Claim Rewards</button>
+        />  
+      </div>
+  )):
+  ((
+    <div>
+       <button class="btn-flat btn-sm"  id="swap2" onClick={() => setModalShow2(true)} disabled>
+          Unstake
+        </button>
+  
+        <MyVerticallyCenteredModal2
+          show={modalShow2}
+          onHide={() => setModalShow2(false)}
+        />  
+      </div>
+  ))
+}
+  </div>
+  <div class="col-sm-6">
+  {  
+  acc1!=0?((
+<div>
+<button class="btn-flat btn-sm" id="swap3" onClick={cr}>Claim Rewards</button>
+
+  </div>
+  )):((
+    <div>
+    <button class="btn-flat btn-sm" id="swap3" onClick={cr} disabled>Claim Rewards</button>
+
+  </div>
+  ))
+}
+  
+        
+    
+  </div>
+</div>
+
+
+
+
+
 
 
     </div><br/>
