@@ -145,7 +145,7 @@ function st(activeStep){
                         <input type="text" id="max"   value={window.v} onChange={onc} class="txtf"/>
                         </div>
                         <div class="col-sm">
-                            <button class="btn-flat" onClick={max}>MAX</button>
+                        <button class="btn-flat" onClick={max}>Max</button>
                         </div>
                     </div>
                           <br/>

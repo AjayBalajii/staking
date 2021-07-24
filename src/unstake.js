@@ -75,16 +75,18 @@ useEffect(async()=>{
 setuacc(await web3.eth.getAccounts());
 if(uacc!=0){
     var us=await Staking.methods.holderUnstakeRemainingTime(uacc[0]).call();
-    var ff=new Date(lock*1000);
+    var ff=new Date(us*1000);
 settime(ff.toDateString());
 
 //settime(lock);
-    var countDownDate = new Date().getTime() + (lock * 1000) ;
+var countDowndate   =us*1000;
+console.log(countDowndate);
+// var countDownDate = new Date().getTime() + (lock * 1000) ;
 //alert(time);
     var x = setInterval(function() {
        var now = new Date().getTime();
-      var distance = countDownDate - now ;
-        
+      var distance = countDowndate - now ;
+     // console.log(now);
       // Time calculations for days, hours, minutes and seconds
      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -105,8 +107,14 @@ settime(ff.toDateString());
       // If the count down is over, write some text 
       if (distance < 0) {
             clearInterval(x);
+            setlock(true);
+
             console.log('CountDown Finished');
         }
+        else{
+          setlock(false);
+        }
+
     
       
     }, 1000);
@@ -117,12 +125,7 @@ settime(ff.toDateString());
  
 
 }
-if(us<=now1){
-setlock(true);
-}
-else{
-    setlock(false);
-}
+
 
 })
     return(
