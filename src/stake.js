@@ -64,16 +64,14 @@ if(sacc!=0){
         let account = await web3.eth.getAccounts();
     
     var am =window.v*1000000000;
-    alert(am);
+  //  alert(am);
     if(am!=0){
         await Staking1.methods.deposit(am).send({from:account[0]});
     setdone("Successfully done");
-    var done1 =document.getElementById("done");
-  if(done1!=null){
-    document.getElementById("done").disabled=false;
+    //var done1 =document.getElementById("done");
     window.s=7;
-  }
-    }
+
+   }
     
       }
 
@@ -209,12 +207,12 @@ function st(activeStep){
 <div>
 <h2>{done}</h2><br/><br/>
 {window.s==7?((
-          <button class="btn-flat" id="done" onClick={lo} >Done</button>
+  <button class="btn-flat" onClick={lo} id="done" >Done</button>
 
 )):
 ((
-  <button class="btn-flat" onClick={lo} id="done" disabled>Done</button>
-
+<h5>please wait Transaction being processed
+</h5>
 ))
 
 }
