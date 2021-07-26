@@ -14,10 +14,10 @@ function MyVerticallyCenteredModal2(props) {
       let account = await web3.eth.getAccounts();
   
   var wi =document.getElementById("tid1").value;
-  alert(wi);
+  //alert(wi);
   if(wi!=0){
       await Staking.methods.withdraw(wi).send({from:account[0]});
-  
+  window.location.reload();
   }
   
     }
