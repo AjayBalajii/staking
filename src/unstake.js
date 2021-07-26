@@ -70,14 +70,24 @@ const[t1,setTim1 ] = useState("");
  const[t3,setTim3 ] = useState("");
 const[t4,setTime4] = useState("");
 const [modalShow2, setModalShow2] = React.useState(false);
+var [hour, sethour]=useState("");
 var [time, settime]=useState("");
+
+var [date, setdate]=useState("");
+
 useEffect(async()=>{
 setuacc(await web3.eth.getAccounts());
 if(uacc!=0){
     var us=await Staking.methods.holderUnstakeRemainingTime(uacc[0]).call();
     var ff=new Date(us*1000);
-settime(ff.toString());
-
+setdate(ff.toDateString());
+var hours = ff.getHours();
+  var minutes = ff.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  settime( hours + ':' + minutes + ' ' + ampm);
 //settime(lock);
 var countDowndate   =us*1000;
 console.log(countDowndate);
@@ -145,7 +155,7 @@ console.log(countDowndate);
             )):
 ((
   <div>
-    <h4>After staking ,you need to wait till this <span style={{color:"#5bc0de"}}>{time} </span> for unstake your Black token and reward.</h4>
+    <h4>After staking ,you need to wait till this <span style={{color:"#5bc0de"}}>{date} {time} </span> for unstake your Black token and reward.</h4>
             <br/>
             <br/>
             <button class="btn-flat"  id="swap2" onClick={() => setModalShow2(true)} disabled>
