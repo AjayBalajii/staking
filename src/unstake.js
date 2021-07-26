@@ -76,7 +76,7 @@ setuacc(await web3.eth.getAccounts());
 if(uacc!=0){
     var us=await Staking.methods.holderUnstakeRemainingTime(uacc[0]).call();
     var ff=new Date(us*1000);
-settime(ff.toDateString());
+settime(ff.toString());
 
 //settime(lock);
 var countDowndate   =us*1000;
@@ -112,7 +112,7 @@ console.log(countDowndate);
             console.log('CountDown Finished');
         }
         else{
-          setlock(false);
+         setlock(false);
         }
 
     
