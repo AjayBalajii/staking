@@ -94,7 +94,7 @@ function st(activeStep){
                   <Sc1/>
                     <input  class="form-check-input"  type="checkbox" onClick={ch}  id="c4"/>&nbsp;
      
-     I have read the <a href="#">Terms and Conditions</a><br/><br/>
+     I have read the <a href="https://blacktermsandconditions.vercel.app/">Terms and Conditions</a><br/><br/>
      <button onClick={previousStep} class="btn-flat">Previous</button>   &nbsp; &nbsp; 
 
      {

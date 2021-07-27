@@ -90,7 +90,7 @@ var hours = ff.getHours();
   settime( hours + ':' + minutes + ' ' + ampm);
 //settime(lock);
 var countDowndate   =us*1000;
-console.log(countDowndate);
+//console.log(countDowndate);
 // var countDownDate = new Date().getTime() + (lock * 1000) ;
 //alert(time);
     var x = setInterval(function() {
@@ -119,7 +119,7 @@ console.log(countDowndate);
             clearInterval(x);
             setlock(true);
 
-            console.log('CountDown Finished');
+           // console.log('CountDown Finished');
         }
         else{
          setlock(false);

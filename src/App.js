@@ -181,13 +181,15 @@ else{
 }
 const connect = async() => {
   window.ethereum.enable();
+  
  // let account = await web3.eth.getAccounts();
  
 //document.getElementById("cc").style.visibility="hidden";
 //window.location.reload();
+
 }
 function backk(){
-  window.location.href="https://blackcollateral.com/";
+  window.location.href="https://blackdashboard-rho.vercel.app/";
 }
 useEffect(()=>{bal()})
 
@@ -223,15 +225,15 @@ useEffect(()=>{bal()})
     <Tabs/>
     </div>
     <div class="col-sm-3">
-    <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Staked</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>{userinfo[0]/1000000000}</div><br/>
+    <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Staked</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>{(userinfo[0]/1000000000)||0}</div><br/>
  
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Total BLACK Staked</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>{tbs/1000000000}</div><br/>
     <div class=" col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>APY</b></h5><hr style={{height:"0px", width:"90%",margin: "auto"}}/>....</div><br/>
-    <div class="container col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{(reward/1000000000).toFixed(9)}
+    <div class="container-fluid col-ele"><h5 style={{color:"#5bc0de",textTransform:"uppercase"}}><b>Rewards</b></h5><hr  style={{width:"90%", height:"0px",margin: "auto"}}/>{(reward/1000000000).toFixed(9)}
     
     <br/><br/>
-<div class="row">
-  <div class="col-sm-3">
+<div class="row" >
+  <div class="col-sm-2">
   {
   acc1!=0?((
     <div>
@@ -257,7 +259,7 @@ useEffect(()=>{bal()})
   </div>
   ))
 }
-  </div>
+  </div>&nbsp;&nbsp;&nbsp;&nbsp;
   <div class="col-sm-3">
   {
   (acc1!=0&&lock==true)?((
