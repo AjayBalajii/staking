@@ -189,7 +189,7 @@ const connect = async() => {
 
 }
 function backk(){
-  window.location.href="https://blackdashboard-rho.vercel.app/";
+  window.location.href="https://blackdashboard-rho.vercel.app/black";
 }
 useEffect(()=>{bal()})
 
