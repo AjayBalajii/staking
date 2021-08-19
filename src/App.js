@@ -36,7 +36,7 @@ if(am!=0){
         id="mymodal"
         centered
       >
-        <Modal.Header className="myModal" style={{backgroundColor:"#191919",color:"white"}} closeButton>
+        <Modal.Header className="myModal" style={{backgroundColor:"#191919",color:"white"}} >
            
           <Modal.Title id="contained-modal-title-vcenter" >
             Amount to Stake
@@ -90,7 +90,7 @@ if(am!=0){
           id="mymodal"
           centered
         >
-          <Modal.Header className="myModal" style={{backgroundColor:"#191919",color:"white"}} closeButton>
+          <Modal.Header className="myModal" style={{backgroundColor:"#191919",color:"white"}} >
              
             <Modal.Title id="contained-modal-title-vcenter" >
               Amount to Unstake
