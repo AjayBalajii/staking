@@ -10,14 +10,14 @@ import Web3 from 'web3';
 
 // window.web3 coming from metamask
 
-const currProvider = window.web3.currentProvider;
+//const currProvider = window.web3.currentProvider;
 
-const web3 = new Web3(currProvider);
+const web3 = new Web3(window.web3.currentProvider);
 
 
-console.log('currProvider ');
+//console.log('currProvider ');
 
-console.log(currProvider);
+//console.log(currProvider);
 
 
 
